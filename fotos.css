@@ -1,0 +1,36 @@
+.fotos-title { padding: clamp(130px, 20vh, 190px) clamp(16px, 6vw, 72px) 40px; box-sizing: border-box; }
+.fotos-title h1 { margin: 0 0 14px; font-family: 'Marcellus', serif; font-weight: 400; font-size: clamp(38px, 6vw, 64px); line-height: 1.08; }
+.fotos-sub { margin: 0; font-size: 18px; color: #55483F; max-width: 560px; line-height: 1.7; }
+
+.fotos-grid {
+  padding: 0 clamp(16px, 6vw, 72px) clamp(80px, 12vh, 130px); box-sizing: border-box;
+  columns: 3 280px; column-gap: 20px;
+}
+.fotos-item { break-inside: avoid; margin-bottom: 20px; }
+.fotos-item img {
+  width: 100%; display: block; border-radius: 14px; cursor: zoom-in;
+  box-shadow: 0 12px 32px -16px rgba(43,35,32,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.fotos-item img:hover { transform: scale(1.02); box-shadow: 0 20px 44px -16px rgba(43,35,32,0.45); }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; background: rgba(24,17,12,0.92);
+  display: flex; align-items: center; justify-content: center; padding: clamp(16px, 4vw, 48px);
+  cursor: zoom-out; box-sizing: border-box;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: 100%; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,0.5); animation: fadeUp 0.35s ease-out both; }
+.lightbox #lightboxClose {
+  position: absolute; top: 20px; right: 20px; width: 48px; height: 48px; border-radius: 999px;
+  border: 1px solid rgba(250,246,239,0.4); background: rgba(250,246,239,0.1); color: #FAF6EF;
+  cursor: pointer; font-size: 22px; display: grid; place-items: center; transition: background 0.2s;
+}
+.lightbox #lightboxClose:hover { background: rgba(250,246,239,0.25); }
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 999px;
+  border: none; background: rgba(250,246,239,0.14); color: #FAF6EF; cursor: pointer;
+  display: grid; place-items: center; transition: background 0.2s;
+}
+.lightbox-nav:hover { background: rgba(250,246,239,0.3); }
+.lightbox-nav-left { left: 14px; }
+.lightbox-nav-right { right: 14px; }
