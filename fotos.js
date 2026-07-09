@@ -29,6 +29,20 @@
   prevBtn.addEventListener('click', function (e) { e.stopPropagation(); nav(-1); });
   nextBtn.addEventListener('click', function (e) { e.stopPropagation(); nav(1); });
 
+  // Swipe en móvil para pasar de foto
+  var touchX = null, touchY = null;
+  lightbox.addEventListener('touchstart', function (e) {
+    touchX = e.touches[0].clientX;
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    var dy = e.changedTouches[0].clientY - touchY;
+    touchX = touchY = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) nav(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
   window.addEventListener('keydown', function (e) {
     if (lightbox.hidden) return;
     if (e.key === 'Escape') close();

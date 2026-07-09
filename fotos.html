@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fotos | Hotel Demi, Villa Gesell</title>
+<meta name="description" content="Galería de fotos del Hotel Demi en Villa Gesell: habitaciones, desayuno y espacios comunes.">
+<meta name="theme-color" content="#FAF6EF">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,11 +16,16 @@
 
 <header class="header">
   <a href="index.html" class="logo">HOTEL DEMI</a>
-  <nav class="nav">
-    <a href="index.html">Inicio</a>
-    <a href="index.html#galeria">Galería</a>
+  <div class="header-right">
+    <nav class="nav" id="siteNav">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#galeria">Galería</a>
+    </nav>
     <a href="index.html#contacto" class="btn-nav">Reservar</a>
-  </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteNav">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path class="nt-bars" d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="nt-x" d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
 </header>
 
 <div class="fotos-title container">
@@ -32,23 +39,23 @@
   <div class="fotos-item"><img src="images/fachada.jpg" alt="Fachada"></div>
   <div class="fotos-item"><img src="images/living.jpg" alt="Estar"></div>
   <div class="fotos-item"><img src="images/hab1.jpg" alt="Habitación matrimonial"></div>
-  <div class="fotos-item"><img src="images/hab2.jpg" alt="Habitación"></div>
-  <div class="fotos-item"><img src="images/desayuno.jpg" alt="Desayuno"></div>
-  <div class="fotos-item"><img src="images/estar.jpg" alt="Sala de estar"></div>
-  <div class="fotos-item"><img src="images/g01.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g02.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g03.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g04.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g05.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g06.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g07.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g08.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g09.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g10.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g11.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g12.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g13.jpg" alt="Hotel Demi"></div>
-  <div class="fotos-item"><img src="images/g14.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/hab2.jpg" alt="Habitación"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/desayuno.jpg" alt="Desayuno"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/estar.jpg" alt="Sala de estar"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g01.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g02.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g03.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g04.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g05.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g06.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g07.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g08.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g09.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g10.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g11.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g12.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g13.jpg" alt="Hotel Demi"></div>
+  <div class="fotos-item"><img loading="lazy" src="images/g14.jpg" alt="Hotel Demi"></div>
 </div>
 
 <!-- Lightbox -->
@@ -69,10 +76,12 @@
   <div class="footer-links">
     <a href="mailto:HotelDemi@hotmail.com">HotelDemi@hotmail.com</a>
     <a href="tel:+542255462658">(02255) 462658</a>
-    <a href="http://wa.me/5492255573894" target="_blank" rel="noopener">WhatsApp +54 9 2255 57-3894</a>
+    <a href="https://wa.me/5492255573894" target="_blank" rel="noopener">WhatsApp +54 9 2255 57-3894</a>
+    <a href="https://www.instagram.com/hoteldemi.vg/" target="_blank" rel="noopener">Instagram @hoteldemi.vg</a>
   </div>
 </footer>
 
+<script src="script.js"></script>
 <script src="fotos.js"></script>
 </body>
 </html>

@@ -1,3 +1,24 @@
+// Marca que JS cargó: recién ahí el CSS oculta los .reveal (fallback sin JS)
+document.documentElement.classList.add('js');
+
+// ===== Menú móvil =====
+(function () {
+  var toggle = document.getElementById('navToggle');
+  var nav = document.getElementById('siteNav');
+  if (!toggle || !nav) return;
+  function setOpen(open) {
+    document.body.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  }
+  toggle.addEventListener('click', function () {
+    setOpen(!document.body.classList.contains('nav-open'));
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') setOpen(false);
+  });
+})();
+
 // ===== Reveal on scroll =====
 (function () {
   var els = document.querySelectorAll('.reveal');
@@ -30,16 +51,34 @@
   if (prevBtn) prevBtn.addEventListener('click', function () { step(-1); });
   if (nextBtn) nextBtn.addEventListener('click', function () { step(1); });
 
-  // Autoplay, stops on first manual interaction
-  var timer = setInterval(function () {
-    var atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10;
-    if (atEnd) carousel.scrollTo({ left: 0, behavior: 'smooth' });
-    else carousel.scrollBy({ left: 380, behavior: 'smooth' });
-  }, 4500);
-  carousel.addEventListener('pointerdown', function stop() {
-    clearInterval(timer);
-    carousel.removeEventListener('pointerdown', stop);
-  }, { once: true });
+  // Indicador de posición (sin autoplay: el usuario controla el scroll)
+  var dotsWrap = document.getElementById('carouselDots');
+  if (dotsWrap) {
+    var items = carousel.querySelectorAll('.carousel-item');
+    var dots = [];
+    items.forEach(function () {
+      var d = document.createElement('span');
+      dotsWrap.appendChild(d);
+      dots.push(d);
+    });
+    var raf = null;
+    function updateDots() {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        raf = null;
+        var center = carousel.scrollLeft + carousel.clientWidth / 2;
+        var best = 0, bestDist = Infinity;
+        items.forEach(function (it, i) {
+          var mid = it.offsetLeft + it.offsetWidth / 2;
+          var dist = Math.abs(mid - center);
+          if (dist < bestDist) { bestDist = dist; best = i; }
+        });
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === best); });
+      });
+    }
+    carousel.addEventListener('scroll', updateDots, { passive: true });
+    updateDots();
+  }
 })();
 
 // ===== Parallax hero =====
@@ -47,6 +86,9 @@
   var textEl = document.querySelector('[data-parallax="text"]');
   var imgEl = document.querySelector('[data-parallax="img"]');
   if (!textEl && !imgEl) return;
+  // En móvil y con reduced-motion el parallax genera jank y desvanece el texto: no se activa
+  if (window.matchMedia('(max-width: 719px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var raf = null;
   function onScroll() {
     if (raf) return;
@@ -76,34 +118,16 @@
   var close = document.getElementById('chatClose');
   if (!panel || !toggle) return;
 
+  // En móvil el panel abre a pantalla completa (CSS), así que no hace falta
+  // reposicionar nada con el teclado: el layout interno del bot lo maneja.
   var isOpen = false;
 
-  function repositionForKeyboard() {
-    var vv = window.visualViewport;
-    if (!vv) return;
-    var isMobile = window.innerWidth < 720;
-    if (isMobile && isOpen) {
-      var gapFromBottom = window.innerHeight - (vv.height + vv.offsetTop);
-      panel.style.bottom = (gapFromBottom + 8) + 'px';
-      panel.style.height = Math.min(vv.height - 90, 560) + 'px';
-    } else {
-      panel.style.bottom = '158px';
-      panel.style.height = '';
-    }
+  function setOpen(open) {
+    isOpen = open;
+    panel.hidden = !open;
+    document.body.classList.toggle('chat-open', open);
   }
 
-  toggle.addEventListener('click', function () {
-    isOpen = !isOpen;
-    panel.hidden = !isOpen;
-    repositionForKeyboard();
-  });
-  if (close) close.addEventListener('click', function () {
-    isOpen = false;
-    panel.hidden = true;
-  });
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', repositionForKeyboard);
-    window.visualViewport.addEventListener('scroll', repositionForKeyboard);
-  }
+  toggle.addEventListener('click', function () { setOpen(!isOpen); });
+  if (close) close.addEventListener('click', function () { setOpen(false); });
 })();
