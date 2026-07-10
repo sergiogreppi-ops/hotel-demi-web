@@ -26,6 +26,12 @@ a { text-decoration: none; }
 .section-pad { padding: clamp(72px, 12vh, 130px) clamp(16px, 6vw, 72px); }
 .section-dark { background: #2B2320; }
 .section-cream { background: #F0E7D6; }
+/* Transiciones entre secciones: la banda oscura se vuelve una tarjeta redondeada
+   y las secciones aparecen con un leve solapamiento */
+.section-dark, .section-cream {
+  border-radius: clamp(28px, 5vw, 56px);
+  position: relative; z-index: 1;
+}
 
 .eyebrow {
   margin: 0 0 12px;
@@ -52,6 +58,9 @@ a { text-decoration: none; }
 /* Reveal on scroll (solo se oculta si JS cargó: html.js) */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
+/* Stagger: los elementos de una misma sección entran escalonados */
+.reveal.in-view:nth-child(2), .in-view + .reveal.in-view { transition-delay: 0.12s; }
+.in-view + .reveal.in-view + .reveal.in-view { transition-delay: 0.24s; }
 html:not(.js) .reveal { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
@@ -212,6 +221,19 @@ body.nav-open .nav-toggle .nt-bars { display: none; }
 .score-info { display: grid; gap: 2px; font-size: 14px; color: #8A7A6C; }
 .score-info strong { font-size: 16px; color: #2B2320; }
 .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 18px; }
+/* En móvil: carrusel horizontal con snap, 1 tarjeta por pantalla */
+@media (max-width: 719px) {
+  .reviews-grid {
+    display: flex; overflow-x: auto; gap: 12px;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    margin: 0 calc(-1 * clamp(16px, 6vw, 72px));
+    padding: 4px clamp(16px, 6vw, 72px) 18px;
+    scrollbar-width: none;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .review-card { flex: 0 0 84%; scroll-snap-align: center; box-sizing: border-box; }
+  .review-card blockquote { font-size: 16.5px; }
+}
 .review-card {
   margin: 0; background: #FFFFFF; border: 1px solid #E8DFCE; border-radius: 16px;
   padding: 24px 26px; display: grid; gap: 14px; align-content: space-between;
