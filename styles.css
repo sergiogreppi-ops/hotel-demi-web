@@ -26,6 +26,35 @@ a { text-decoration: none; }
 .section-pad { padding: clamp(72px, 12vh, 130px) clamp(16px, 6vw, 72px); }
 .section-dark { background: #2B2320; }
 .section-cream { background: #F0E7D6; }
+
+/* ===== Parallax entre bloques (scroll-driven, sin JS) =====
+   Progresivo: solo en navegadores con animation-timeline; el resto mantiene el reveal clásico */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    /* Imágenes que "flotan" más lento que el scroll */
+    .px-float {
+      animation: pxFloat linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+    /* Las bandas/tarjetas grandes entran creciendo desde 96% */
+    .section-dark, .contact-card, .review-card {
+      animation: pxGrow linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 80%;
+    }
+    /* Títulos de sección: leve deriva vertical inversa */
+    .px-drift {
+      animation: pxDrift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+@keyframes pxFloat { from { transform: translateY(90px); } to { transform: translateY(-90px); } }
+@keyframes pxGrow { from { transform: scale(0.9) translateY(56px); opacity: 0.55; } to { transform: scale(1) translateY(0); opacity: 1; } }
+@keyframes pxDrift { from { transform: translateY(48px); } to { transform: translateY(-48px); } }
+
 /* Transiciones entre secciones: la banda oscura se vuelve una tarjeta redondeada
    y las secciones aparecen con un leve solapamiento */
 .section-dark, .section-cream {
