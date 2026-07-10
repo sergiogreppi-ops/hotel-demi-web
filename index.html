@@ -46,10 +46,10 @@
     <nav class="nav" id="siteNav">
       <a href="#sobre">Sobre nosotros</a>
       <a href="#servicios">Servicios</a>
-      <a href="#galeria">Galería</a>
       <a href="fotos.html">Fotos</a>
+      <a href="#opiniones">Opiniones</a>
     </nav>
-    <a href="#contacto" class="btn-nav">Reservar</a>
+    <button class="btn-nav" data-open-chat>Reservar</button>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteNav">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path class="nt-bars" d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="nt-x" d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
@@ -66,7 +66,7 @@
       <h1 class="reveal">Hotel Demi</h1>
       <p class="hero-sub reveal">Tu hogar en Villa Gesell —<br><span class="nowrap">a 2 cuadras de la playa y 3 de la peatonal.</span></p>
       <div class="hero-actions reveal">
-        <a href="#contacto" class="btn-primary">Consultar disponibilidad</a>
+        <button class="btn-primary" data-open-chat>Cotizá tu estadía</button>
         <a href="https://wa.me/5492255573894" target="_blank" rel="noopener" class="btn-outline">WhatsApp</a>
       </div>
     </div>
@@ -173,65 +173,73 @@
   <div class="carousel-dots" id="carouselDots" aria-hidden="true"></div>
 </section>
 
-<!-- ===== CONTACTO ===== -->
-<section id="contacto" class="section-pad section-cream">
-  <div class="container two-col">
-    <div class="reveal">
-      <p class="eyebrow">Contacto</p>
-      <h2 class="h2">Consultá disponibilidad y tarifas</h2>
-      <p class="p-lead" style="max-width:460px;">Escribinos y te respondemos a la brevedad. También podés llamarnos o mandarnos un WhatsApp.</p>
-      <div class="contact-list">
-        <div class="contact-item">
-          <span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg></span>
-          <span>Avenida 3 y Paseo 111, Villa Gesell,<br>Provincia de Buenos Aires</span>
+<!-- ===== OPINIONES ===== -->
+<section id="opiniones" class="section-pad">
+  <div class="container">
+    <div class="reviews-head reveal">
+      <div>
+        <p class="eyebrow">Opiniones</p>
+        <h2 class="h2">Huéspedes que vuelven</h2>
+      </div>
+      <a class="review-score" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Demi+Villa+Gesell" target="_blank" rel="noopener">
+        <span class="score-num">4,4</span>
+        <span class="score-info"><strong>★★★★½ · 4,4 de 5</strong>276 opiniones en Google</span>
+      </a>
+    </div>
+    <div class="reviews-grid">
+      <figure class="review-card reveal">
+        <blockquote>“Muy buena ubicación, sus dueños muy serviciales y lugar tranquilo. Cerca de la playa.”</blockquote>
+        <figcaption>Huésped · Booking.com</figcaption>
+      </figure>
+      <figure class="review-card reveal">
+        <blockquote>“Excelente relación precio-calidad. Las habitaciones son sencillas pero bien equipadas y muy limpias.”</blockquote>
+        <figcaption>Huésped · Tripadvisor</figcaption>
+      </figure>
+      <figure class="review-card reveal">
+        <blockquote>“Muy buen desayuno, el personal siempre al servicio del cliente, la ubicación inmejorable.”</blockquote>
+        <figcaption>Huésped · Booking.com</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO / UBICACIÓN ===== -->
+<section id="contacto" class="section-pad">
+  <div class="container">
+    <div class="contact-card reveal">
+      <div class="contact-main">
+        <p class="eyebrow eyebrow-light">Contacto</p>
+        <h2 class="h2 contact-title">Reservá directo<br>con nosotros</h2>
+        <button class="btn-primary btn-block" data-open-chat>Cotizá tu estadía en 1 minuto</button>
+        <div class="channel-grid">
+          <a class="channel" href="https://wa.me/5492255573894" target="_blank" rel="noopener">
+            <span class="channel-icon channel-wa"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.7-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 8.5c0 4 2.5 6.5 6.5 6.5l.9-1.8-2-1-1 .7c-1.2-.5-2-1.3-2.4-2.4l.8-1-1-2-1.8.9z" fill="currentColor"/></svg></span>
+            <span class="channel-text"><strong>WhatsApp</strong><small>+54 9 2255 57-3894</small></span>
+          </a>
+          <a class="channel" href="tel:+542255462658">
+            <span class="channel-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+            <span class="channel-text"><strong>Teléfono</strong><small>(02255) 462658</small></span>
+          </a>
+          <a class="channel" href="https://www.instagram.com/hoteldemi.vg/" target="_blank" rel="noopener">
+            <span class="channel-icon channel-ig"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.3" fill="currentColor"/></svg></span>
+            <span class="channel-text"><strong>Instagram</strong><small>@hoteldemi.vg</small></span>
+          </a>
+          <a class="channel" href="mailto:HotelDemi@hotmail.com">
+            <span class="channel-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <span class="channel-text"><strong>Email</strong><small>HotelDemi@hotmail.com</small></span>
+          </a>
         </div>
-        <div class="contact-item">
-          <span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-          <a href="tel:+542255462658">(02255) 462658</a>
+      </div>
+      <div class="contact-side">
+        <div class="mini-map">
+          <iframe src="https://www.google.com/maps?q=Hotel+Demi,+Avenida+3+y+Paseo+111,+Villa+Gesell,+Argentina&amp;output=embed" title="Mapa — Hotel Demi, Villa Gesell" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
         </div>
-        <div class="contact-item">
-          <span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5"/></svg></span>
-          <a href="mailto:HotelDemi@hotmail.com">HotelDemi@hotmail.com</a>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.7-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
-          <a href="https://wa.me/5492255573894" target="_blank" rel="noopener">+54 9 2255 57-3894</a>
-        </div>
-        <div class="contact-item">
-          <span class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></span>
-          <a href="https://www.instagram.com/hoteldemi.vg/" target="_blank" rel="noopener">@hoteldemi.vg</a>
-        </div>
+        <a class="channel channel-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination=Hotel+Demi+Villa+Gesell" target="_blank" rel="noopener">
+          <span class="channel-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.5-7-11a7 7 0 1114 0c0 5.5-7 11-7 11z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
+          <span class="channel-text"><strong>Cómo llegar</strong><small>Avenida 3 y Paseo 111, Villa Gesell</small></span>
+        </a>
       </div>
     </div>
-    <form class="contact-form reveal" action="https://formspree.io/f/TU_ID_DE_FORMULARIO" method="POST">
-      <div class="form-row">
-        <label>Nombre *
-          <input name="nombre" type="text" required placeholder="Tu nombre">
-        </label>
-        <label>Teléfono *
-          <input name="telefono" type="tel" required placeholder="Tu teléfono">
-        </label>
-      </div>
-      <label>Email *
-        <input name="email" type="email" required placeholder="tu@email.com">
-      </label>
-      <div class="form-row form-row-3">
-        <label class="grow">Ingreso
-          <input name="ingreso" type="date">
-        </label>
-        <label class="grow">Salida
-          <input name="salida" type="date">
-        </label>
-        <label class="small">Huéspedes
-          <input name="huespedes" type="number" min="1" placeholder="2">
-        </label>
-      </div>
-      <label>Mensaje *
-        <textarea name="mensaje" required rows="4" placeholder="Escribí tu consulta aquí…"></textarea>
-      </label>
-      <button type="submit" class="btn-primary btn-block">Enviar consulta</button>
-      <p class="form-note">Al enviar, recibirás la respuesta por email o WhatsApp.</p>
-    </form>
   </div>
 </section>
 
@@ -256,9 +264,9 @@
   <iframe src="https://hotel-chatbot-six.vercel.app/" title="Chat de consultas"></iframe>
 </div>
 <div class="fab fab-chat">
-  <span class="fab-label fab-label-dark">Consultá al asistente virtual</span>
-  <button id="chatToggle" aria-label="Chat de consultas" class="fab-btn fab-btn-chat">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M21 12a8 8 0 01-8 8H4l1.5-3A8 8 0 1121 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="13" cy="12" r="1" fill="currentColor"/><circle cx="17" cy="12" r="1" fill="currentColor"/></svg>
+  <button id="chatToggle" class="fab-btn fab-btn-chat">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 12a8 8 0 01-8 8H4l1.5-3A8 8 0 1121 12z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="13" cy="12" r="1" fill="currentColor"/><circle cx="17" cy="12" r="1" fill="currentColor"/></svg>
+    <span>Hacé tu consulta</span>
   </button>
 </div>
 <div class="fab fab-whatsapp">

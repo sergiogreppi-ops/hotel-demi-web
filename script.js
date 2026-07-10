@@ -1,6 +1,43 @@
 // Marca que JS cargó: recién ahí el CSS oculta los .reveal (fallback sin JS)
 document.documentElement.classList.add('js');
 
+// ===== Abrir el chat desde cualquier CTA [data-open-chat] =====
+(function () {
+  var panel = document.getElementById('chatPanel');
+  var toggle = document.getElementById('chatToggle');
+  if (!panel || !toggle) return;
+  document.querySelectorAll('[data-open-chat]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (panel.hidden) toggle.click(); // reutiliza el estado del módulo del chat
+      document.body.classList.remove('nav-open');
+    });
+  });
+})();
+
+// ===== Opiniones: rota 3 al azar del pool en cada visita =====
+(function () {
+  var cards = document.querySelectorAll('.review-card');
+  if (!cards.length) return;
+  var pool = [
+    { t: 'Muy buena ubicación, sus dueños muy serviciales y lugar tranquilo. Cerca de la playa.', s: 'Booking.com' },
+    { t: 'Excelente relación precio-calidad. Las habitaciones son sencillas pero bien equipadas y muy limpias.', s: 'Tripadvisor' },
+    { t: 'Muy buen desayuno, el personal siempre al servicio del cliente, la ubicación inmejorable.', s: 'Booking.com' },
+    { t: 'Me encantó el hotel Demi. Simplemente es todo lo que necesitaba. Es un lugar muy tranquilo, limpio y siempre hay alguna persona disponible para ayudarte en lo que necesites.', s: 'Google' },
+    { t: 'Todo impecable. Muy cómodo. Excelente ubicación. Atención de la mejor. Hermoso hotel. Cerca de la playa. Desayuno super rico. Muy buen precio.', s: 'Google' },
+    { t: 'Estoy muy contenta con la estadía que tuve en el hotel, desde el servicio de desayuno, la atención de los empleados y la habitación.', s: 'Google' },
+    { t: 'Excelente ubicación. La habitación tiene lo justo y necesario. La atención del personal es muy buena, muy amables y serviciales.', s: 'Google' }
+  ];
+  for (var i = pool.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = pool[i]; pool[i] = pool[j]; pool[j] = tmp;
+  }
+  cards.forEach(function (card, i) {
+    if (!pool[i]) return;
+    card.querySelector('blockquote').textContent = '\u201C' + pool[i].t + '\u201D';
+    card.querySelector('figcaption').textContent = 'Hu\u00e9sped \u00B7 ' + pool[i].s;
+  });
+})();
+
 // ===== Menú móvil =====
 (function () {
   var toggle = document.getElementById('navToggle');
